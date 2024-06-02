@@ -1,0 +1,21 @@
+#!/bin/bash
+
+lists="./lists"
+n=0
+if [ -d "$lists" ]; then
+    cd "$lists"
+    for file in *; do 
+	if [ -f "$file" ]; then
+		while IFS= read -r line; do
+			echo "$line"
+		done < $file
+		n=$((n+=1))
+	fi
+    done
+else
+	echo "Директория не существует"
+fi
+
+echo "$n"
+
+
